@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <title> zo*-*d Ex </title>
+    </head>
+    <body>
+        <hr><hr>
+        <p align=center> <img src="image/MonHunt.jfif" align="center"> <h2 align="center"> Welcome to MonHunt Mini Encyclopedia </h2></p>
+        <hr><hr>
+        <p>
+            <h3> Choose Menu </h3>
+            <ul>
+               <li> <a href="index.html"> Home </a> </li>
+               <li> <a href="data.html"> Weapon List </a> </li>
+               <li> <a href="kontak.html"> Question </a> </li>
+            </ul>
+            <hr><hr>
+
+            <form id="contact">
+                 <!-- Subject -->
+                 <input type="hidden" name="title" value="Pesan">
+                 <br>
+                 <!-- Name -->
+                 <label for="nama"> Name : </label> <br>
+                 <input type="text" id="nama" name="name" required>
+                 <br>
+                 <!-- email -->
+                 <label for="email"> Email : </label> <br>
+                 <input type="email" id="email" name="email" required>
+                 <br>
+                 <!-- Message -->
+                 <label for="pesan"> Message : </label> <br>
+                 <textarea cols="160" rows="20" id="pesan" name="message" placeholder="Type your message here" required> </textarea>
+                 <br>
+                 <!-- Submit -->
+                 <button type="submit"> Submit </button>
+            </form>
+            <hr><hr>
+        
+            <!-- JS -->
+            <!-- CDN emailjs -->
+            <script type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+            </script>
+            <script type="text/javascript">
+
+                // Inisialisasi EmailJS dengan Public Key
+                emailjs.init("M7X9X7LbmfgOXF0PI")
+
+                // Ambil elemen form
+                const form= document.getElementById("contact")
+
+                // Saat form disubmit
+                form.addEventListener
+                ("submit", function(e)
+                { e.preventDefault();
+                // Mencegah reload halaman default form
+
+                    // Kirim data EmailJS
+                    emailjs.sendForm(
+                        // Service ID
+                        "service_ls7pgzj" ,
+                        // Template ID
+                        "template_i2wcard" ,
+                        // Data form yang dikirim
+                        this
+                    )
+                    
+                    // Setelah megirim 
+                    .then(function() {
+                        alert("Pesan berhasil dikirim");
+                        form.reset(); },
+                        // Kosongkan form setelah terkirim
+                        function(error) {
+                            alert("Gagal mengirim pesan: " + JSON.stringfy(error));
+                        });
+                        
+                });
+                
+            </script>
+
+        </p>
+    </body>
+</html>
